@@ -9,9 +9,12 @@ const lendhub = Instrument_Sans({ subsets: ['latin'], weight: '700', variable: '
 const description =
   'Senior Applied Scientist building production LLM, multi-agent and RAG systems across Healthcare, Telecom and AIOps.';
 
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : 'http://localhost:3000';
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'http://localhost:3000');
+const ogImage = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/abhinav.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,10 +23,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Abhinav Kaushik — Senior Applied Scientist',
     description,
-    images: ['/abhinav.jpg'],
+    images: [ogImage],
     type: 'website',
   },
-  twitter: { card: 'summary', title: 'Abhinav Kaushik', description, images: ['/abhinav.jpg'] },
+  twitter: { card: 'summary', title: 'Abhinav Kaushik', description, images: [ogImage] },
 };
 
 export const viewport: Viewport = {

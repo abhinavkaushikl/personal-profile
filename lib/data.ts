@@ -1,3 +1,6 @@
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const asset = (path: string) => `${BASE}${path}`;
+
 export const profile = {
   name: 'Abhinav Kaushik',
   role: 'Senior Applied Scientist',
@@ -6,16 +9,16 @@ export const profile = {
   email: 'aabhinav.kaushik@gmail.com',
   github: 'https://github.com/abhinavkaushikl',
   linkedin: 'https://www.linkedin.com/in/abhinav-kaushik10/',
-  resume: '/Abhinav_Kaushik_Resume.pdf',
-  photo: '/abhinav.jpg',
+  resume: asset('/Abhinav_Kaushik_Resume.pdf'),
+  photo: asset('/abhinav.jpg'),
 };
 
 export const companies = [
-  { name: 'UnitedHealth Group', years: '2025 — now', logo: '/logos/unitedhealth-group.svg', h: 20 },
-  { name: 'VIAVI Solutions', years: '2021 — 2025', logo: '/logos/viavi.svg', h: 25 },
-  { name: 'Optum', years: '2021', logo: '/logos/optum.svg', h: 34 },
-  { name: 'Nippon Life', years: '2019 — 2021', logo: '/logos/nippon-life.png', h: 46 },
-  { name: 'Colt', years: '2017 — 2019', logo: '/logos/colt.png', h: 38 },
+  { name: 'UnitedHealth Group', years: '2025 — now', logo: asset('/logos/unitedhealth-group.svg'), h: 20 },
+  { name: 'VIAVI Solutions', years: '2021 — 2025', logo: asset('/logos/viavi.svg'), h: 25 },
+  { name: 'Optum', years: '2021', logo: asset('/logos/optum.svg'), h: 34 },
+  { name: 'Nippon Life', years: '2019 — 2021', logo: asset('/logos/nippon-life.png'), h: 46 },
+  { name: 'Colt', years: '2017 — 2019', logo: asset('/logos/colt.png'), h: 38 },
 ];
 
 export type Highlight = { metric: string; text: string };
@@ -38,7 +41,7 @@ export const missions: Mission[] = [
     code: '06',
     role: 'Senior Applied Scientist',
     company: 'UnitedHealth Group',
-    logo: '/logos/unitedhealth-group.svg',
+    logo: asset('/logos/unitedhealth-group.svg'),
     logoH: 30,
     location: 'Bengaluru',
     period: 'Nov 2025 — Present',
@@ -57,7 +60,7 @@ export const missions: Mission[] = [
     code: '05',
     role: 'Senior Machine Learning Engineer',
     company: 'Viavi Solutions',
-    logo: '/logos/viavi.svg',
+    logo: asset('/logos/viavi.svg'),
     logoH: 36,
     location: 'Chennai',
     period: 'Sep 2024 — Nov 2025',
@@ -76,7 +79,7 @@ export const missions: Mission[] = [
     code: '04',
     role: 'Data Scientist',
     company: 'Viavi Solutions',
-    logo: '/logos/viavi.svg',
+    logo: asset('/logos/viavi.svg'),
     logoH: 36,
     location: 'Bengaluru',
     period: 'Nov 2021 — Sep 2024',
@@ -93,7 +96,7 @@ export const missions: Mission[] = [
     code: '03',
     role: 'Data Analyst',
     company: 'Optum',
-    logo: '/logos/optum.svg',
+    logo: asset('/logos/optum.svg'),
     logoH: 48,
     location: 'Gurugram',
     period: 'Jun 2021 — Nov 2021',
@@ -108,7 +111,7 @@ export const missions: Mission[] = [
     code: '02',
     role: 'Data Engineer',
     company: 'Nippon Data Systems',
-    logo: '/logos/nippon-life.png',
+    logo: asset('/logos/nippon-life.png'),
     logoH: 64,
     location: 'Gurugram',
     period: 'Nov 2019 — May 2021',
@@ -123,7 +126,7 @@ export const missions: Mission[] = [
     code: '01',
     role: 'Associate Consultant',
     company: 'Saksoft',
-    logo: '/logos/colt.png',
+    logo: asset('/logos/colt.png'),
     logoH: 44,
     location: 'Gurugram',
     period: 'Dec 2017 — Nov 2019',
@@ -196,8 +199,8 @@ export const skillLinks: [number, number][] = [
 ];
 
 export const education = [
-  { degree: 'M.Sc. Machine Learning & AI', school: 'Liverpool John Moores University', period: '2021 — 2023', logo: '/logos/ljmu.png', logoH: 56 },
-  { degree: 'B.Tech. Information Technology', school: 'Jamia Hamdard', period: '2013 — 2017', logo: '/logos/jamia.png', logoH: 76 },
+  { degree: 'M.Sc. Machine Learning & AI', school: 'Liverpool John Moores University', period: '2021 — 2023', logo: asset('/logos/ljmu.png'), logoH: 56 },
+  { degree: 'B.Tech. Information Technology', school: 'Jamia Hamdard', period: '2013 — 2017', logo: asset('/logos/jamia.png'), logoH: 76 },
 ];
 
 export const internships = ['Network Intern · Airport Authority of India', 'Hadoop Intern · Ducat Technologies'];
