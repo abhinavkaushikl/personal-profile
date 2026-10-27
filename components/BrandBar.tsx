@@ -11,7 +11,7 @@ export default function BrandBar() {
             <p className="eyebrow">
               <span className="text-ion">Deployed at</span> — mission history
             </p>
-            <p className="eyebrow">6 missions · 5 organisations · 2017 → now</p>
+            <p className="eyebrow">Healthcare · Telecom · AIOps</p>
           </div>
         </Reveal>
       </div>

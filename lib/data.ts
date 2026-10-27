@@ -21,7 +21,6 @@ export const companies = [
   { name: 'Colt', years: '2017 — 2019', logo: asset('/logos/colt.png'), h: 38 },
 ];
 
-export type Highlight = { metric: string; text: string };
 export type Mission = {
   code: string;
   role: string;
@@ -32,7 +31,7 @@ export type Mission = {
   logo: string;
   logoH: number;
   summary: string;
-  highlights: Highlight[];
+  highlights: string[];
   stack: string[];
 };
 
@@ -49,10 +48,11 @@ export const missions: Mission[] = [
     summary:
       'Leading engineers on production agentic systems for healthcare — frontier-model extraction, multi-agent analytics, and the evals that keep them honest.',
     highlights: [
-      { metric: '−98%', text: 'manual analysis — production multi-agent analytics chatbot with Pydantic-validated tools, PySpark and multi-turn reasoning' },
-      { metric: '1,800', text: 'documents through a lab-extraction agent on Claude Opus 4.7 + Textract on ECS, leading a team of 3' },
-      { metric: '−60%', text: 'token cost by benchmarking model choice per step and routing extraction to smaller models' },
-      { metric: '−43%', text: 'human review via standardized LLM-judge evals, tracing and failure detection' },
+      "Led engineers building a production lab-extraction agent on Claude Opus with Textract on ECS and Pydantic-validated outputs",
+      "Engineered a production multi-agent analytics chatbot with Pydantic-validated tools, PySpark analysis and multi-turn reasoning",
+      "Architected a multi-agent RAG platform on AWS Bedrock with HyDE query rewriting, hybrid retrieval and LLM-as-judge hallucination checks",
+      "Owned token economics for agentic workflows, routing each step to the right-sized model",
+      "Standardized LLM evaluation, tracing and failure detection so human review could focus where it matters",
     ],
     stack: ['Claude', 'AWS Bedrock', 'Textract', 'ECS', 'PySpark', 'Pydantic', 'Databricks', 'pgvector'],
   },
@@ -65,13 +65,13 @@ export const missions: Mission[] = [
     location: 'Chennai',
     period: 'Sep 2024 — Nov 2025',
     summary:
-      'Led a team of four building AIOps intelligence for global telecom operators — from alarm floods to root cause, in real time.',
+      'Led the team building AIOps intelligence for global telecom operators — from alarm floods to root cause, in real time.',
     highlights: [
-      { metric: '+83%', text: 'semantic alarm classification — event-correlation engine with Sentence-BERT + DBSCAN' },
-      { metric: '−67%', text: 'downtime — SLA-breach prediction with LightGBM, FastAPI, MLflow and LLM root-cause analysis' },
-      { metric: '90%', text: 'match rate on a RAG Project Discovery Assistant with PII redaction for sales & presales' },
-      { metric: '7 / 15', text: 'research prototypes promoted to production or paid work across NAM, EMEA and LATAM' },
-      { metric: '3-stage', text: 'Grounded Support Agent — PydanticAI tool calling, RAG re-ranked by a PyTorch cross-encoder, and a grounding check that blocks hallucinated answers; judged by LLMs, tracked in MLflow' },
+      "Led an event-correlation engine clustering alarms with Sentence-BERT and DBSCAN, tracing alarm floods back to the root event",
+      "Deployed SLA-breach prediction with LightGBM, FastAPI and MLflow, with LLM root-cause analysis for every breach",
+      "Built a RAG Project Discovery Assistant with PII redaction that earned the trust of sales and presales",
+      "Mentored engineers across AIOps research prototypes for clients in NAM, EMEA and LATAM, taking the best into production",
+      "Grounded Support Agent — PydanticAI tool calling, RAG re-ranked by a PyTorch cross-encoder, and a grounding check that blocks hallucinated answers",
     ],
     stack: ['Sentence-BERT', 'DBSCAN', 'LightGBM', 'PydanticAI', 'PyTorch', 'FastAPI', 'MLflow', 'Docker'],
   },
@@ -85,10 +85,10 @@ export const missions: Mission[] = [
     period: 'Nov 2021 — Sep 2024',
     summary: 'Forecasting and anomaly detection for telecom networks — so planners see problems before customers do.',
     highlights: [
-      { metric: '500+', text: 'telecom network devices monitored by anomaly detection and demand forecasting' },
-      { metric: '80+', text: 'device SKUs in inventory demand forecasting, targeting a 10% cut in excess and at-risk stock' },
-      { metric: '15+', text: 'KPIs per device modelled with Isolation Forest and Holt-Winters, validated against historical baselines' },
-      { metric: '3', text: 'network metrics — call quality, SMS delivery and efficiency — forecast in production with LSTM + XGBoost' },
+      "Shipped anomaly detection and demand forecasting across telecom network devices with Isolation Forest and Holt-Winters",
+      "Forecast network-device inventory demand to cut excess and at-risk stock",
+      "Put LSTM + XGBoost forecasting into production for call quality, SMS delivery and network efficiency",
+      "Designed a geo-location dashboard of faulty connections across EMEA that helped service providers resolve faults faster",
     ],
     stack: ['Isolation Forest', 'Holt-Winters', 'LSTM', 'XGBoost', 'SQL', 'Python'],
   },
@@ -102,8 +102,8 @@ export const missions: Mission[] = [
     period: 'Jun 2021 — Nov 2021',
     summary: 'Customer-centric analytics for the Renew Rewards programme — turning member data into marketing wins.',
     highlights: [
-      { metric: '83%', text: 'of targeted premium clients converted month over month, powered by a Renew Rewards analytics engine, NLP on member feedback and a marketing dashboard' },
-      { metric: 'Python', text: 'automation of Renew Rewards data processing and reporting on Databricks, handling highly volatile member data' },
+      "Built a customer-centric Renew Rewards analytics engine and dashboard for premium clients, with NLP on member feedback, driving month-over-month conversions for marketing",
+      "Automated Renew Rewards data processing and reporting in Python on Databricks, handling highly volatile member data",
     ],
     stack: ['Python', 'NLP', 'Databricks', 'Dashboards'],
   },
@@ -117,8 +117,8 @@ export const missions: Mission[] = [
     period: 'Nov 2019 — May 2021',
     summary: 'Automated the reporting nobody wanted to do by hand, on large healthcare datasets.',
     highlights: [
-      { metric: '−95%', text: 'manual effort — SQL, PySpark and Airflow pipelines for medical-audit reporting' },
-      { metric: '+80%', text: 'traceability — real-time log observability for the COVID QRT team' },
+      "Automated medical-audit reporting on large healthcare datasets with SQL, PySpark and Airflow pipelines",
+      "Built real-time log observability for the COVID QRT team with Elasticsearch and Kibana",
     ],
     stack: ['PySpark', 'Airflow', 'SQL', 'Elasticsearch', 'Kibana'],
   },
@@ -132,8 +132,8 @@ export const missions: Mission[] = [
     period: 'Dec 2017 — Nov 2019',
     summary: 'Where it started: financial data, dashboards, and a first production model.',
     highlights: [
-      { metric: '+40%', text: 'dashboard engagement with QlikSense, SQL and SAP HANA' },
-      { metric: '7-day', text: 'XGBoost propensity model predicting personal-loan applications' },
+      "Built financial and product dashboards with QlikSense, SQL and SAP HANA that lifted user engagement",
+      "Developed an XGBoost propensity model predicting personal-loan applications for targeted outreach",
     ],
     stack: ['QlikSense', 'SAP HANA', 'SQL', 'XGBoost'],
   },
@@ -163,7 +163,6 @@ export const projects: Project[] = [
     kind: 'Agentic security',
     status: 'Validated',
     desc: 'Drives a real browser through live e-commerce sites against a rule pack; an LLM interprets the evidence and classifies threats into reproducible reports.',
-    metric: { v: '144', l: 'controls · 20+ storefronts' },
     tags: ['Playwright', 'LLM agents', 'Security'],
   },
   {

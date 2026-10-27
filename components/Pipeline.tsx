@@ -19,7 +19,6 @@ const STAGES: { id: string; label: string; sub: string; tier: Tier; ms: number }
 const COST: Record<Tier, number> = { small: 1.85, frontier: 10, search: 0.5 };
 const effTier = (t: Tier, routing: boolean): Tier => (t === 'search' ? 'search' : routing ? t : 'frontier');
 const totalCost = (routing: boolean) => STAGES.reduce((s, st) => s + COST[effTier(st.tier, routing)], 0);
-const SAVING = Math.round((1 - totalCost(true) / totalCost(false)) * 100);
 
 const QUESTIONS = [
   'Is telehealth covered under my plan?',
@@ -87,12 +86,11 @@ export default function Pipeline() {
     timers.current.push(
       window.setTimeout(() => {
         setStep(STAGES.length);
-        const cost = totalCost(routing).toFixed(1);
         setLog((l) => [
           ...l,
           {
             k: 'ok',
-            t: `✓ answer released · ${(t / 1000).toFixed(2)}s · ${cost} cost units${routing ? ` (−${SAVING}% vs all-frontier)` : ''}`,
+            t: `✓ answer released · grounded and judge-approved${routing ? ' · routed per step' : ''}`,
           },
         ]);
       }, 450 + STAGES.length * 720),
@@ -109,7 +107,7 @@ export default function Pipeline() {
           index="05"
           label="Simulator — inside an agent"
           title={<>Watch an agent<br />think.</>}
-          kicker="A six-stage RAG pipeline of the kind I architect: query rewriting, hybrid retrieval, re-ranking, grounded generation, and a judge that refuses to let hallucinations through. Flip model routing to see where the money goes."
+          kicker="A six-stage RAG pipeline of the kind I architect: query rewriting, hybrid retrieval, re-ranking, grounded generation, and a judge that refuses to let hallucinations through. Flip model routing to see how each step picks its model."
         />
 
         <Reveal>
@@ -250,9 +248,8 @@ export default function Pipeline() {
                     { label: 'Routed per step', w: ratio, on: routing },
                   ].map((b) => (
                     <div key={b.label}>
-                      <div className="mb-2 flex justify-between text-[13px]">
+                      <div className="mb-2 text-[13px]">
                         <span className={b.on ? 'text-star' : 'text-star/40'}>{b.label}</span>
-                        <span className="font-mono text-star/50">{(b.w * totalCost(false)).toFixed(1)}u</span>
                       </div>
                       <div className="h-2 overflow-hidden rounded-full bg-white/[0.06]">
                         <motion.div
@@ -266,21 +263,15 @@ export default function Pipeline() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 flex items-baseline gap-3">
-                  <motion.span
-                    key={String(routing)}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`font-mono text-5xl font-medium tracking-tight ${routing ? 'text-ion' : 'text-star/30'}`}
-                  >
-                    −{routing ? SAVING : 0}%
-                  </motion.span>
-                  <span className="text-[13px] leading-snug text-star/45">
-                    Small models for routing &amp; judging,
-                    <br />
-                    frontier only where reasoning pays.
-                  </span>
-                </div>
+                <motion.p
+                  key={String(routing)}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 text-[15px] leading-snug text-star/60"
+                >
+                  <span className={routing ? 'text-ion' : 'text-star/40'}>{routing ? 'Routing on.' : 'Routing off.'}</span>{' '}
+                  Small models for routing &amp; judging, frontier only where reasoning pays.
+                </motion.p>
               </div>
             </div>
           </div>

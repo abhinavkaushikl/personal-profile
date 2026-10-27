@@ -63,7 +63,7 @@ export default function FlightLog() {
         <SectionHeader
           index="03"
           label="Flight log — trajectory"
-          title={<>Nine years.<br />Six missions.</>}
+          title={<>Every mission,<br />shipped.</>}
           kicker="From SQL pipelines to frontier-model agents — every role shipped something that ran in production."
         />
 
@@ -127,11 +127,9 @@ export default function FlightLog() {
                   <div className="flex flex-col">
                     <ul className="divide-y divide-white/[0.06] border-y border-white/[0.06]">
                       {m.highlights.map((h) => (
-                        <li key={h.text} className="grid grid-cols-[96px_1fr] items-baseline gap-5 py-5 md:grid-cols-[132px_1fr]">
-                          <span className="font-mono text-[clamp(1.1rem,1.8vw,1.6rem)] font-medium tracking-tight text-ion">
-                            {h.metric}
-                          </span>
-                          <span className="text-[15px] leading-relaxed text-star/70 md:text-base">{h.text}</span>
+                        <li key={h} className="flex items-start gap-4 py-5">
+                          <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-ion shadow-[0_0_10px_rgba(94,232,245,0.7)]" />
+                          <span className="text-[15px] leading-relaxed text-star/75 md:text-base">{h}</span>
                         </li>
                       ))}
                     </ul>

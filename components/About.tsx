@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeader from './ui/SectionHeader';
-import CountUp from './ui/CountUp';
 import Reveal from './ui/Reveal';
 import LendhubMark from './ui/LendhubMark';
 
@@ -13,20 +12,20 @@ const BIO: [string, boolean][] = [
   ['production — not demos.', true],
   ["Today I'm a Senior Applied Scientist at", false],
   ['UnitedHealth Group,', true],
-  ['leading engineers on frontier-model extraction pipelines, agentic analytics and the evals that keep them honest. Before that, four years at', false],
+  ['leading engineers on frontier-model extraction pipelines, agentic analytics and the evals that keep them honest. Before that, at', false],
   ['Viavi', true],
   ['turning telecom alarm floods into root causes and forecasts. Off the clock I’m building', false],
   ['ThinkTree.AI', true],
   ['— a non-profit platform helping NGO teachers support students with ADHD.', false],
 ];
 
-const STATS = [
-  { to: 9, suffix: '+', label: 'Years shipping ML, NLP & LLM systems' },
-  { to: 98, suffix: '%', label: 'Manual analysis removed by a multi-agent analytics chatbot' },
-  { to: 60, suffix: '%', label: 'Token cost cut with per-step model routing' },
-  { to: 67, suffix: '%', label: 'Network downtime reduced via SLA-breach prediction' },
-  { to: 83, suffix: '%', label: 'Lift in semantic alarm classification' },
-  { to: 7, suffix: ' / 15', label: 'Research prototypes promoted to production' },
+const PRINCIPLES = [
+  { title: 'Work backwards', text: "Start from the customer's problem, not the model." },
+  { title: 'Own it end to end', text: 'From research notebook to production system.' },
+  { title: 'Dive deep', text: 'Evals, traces and baselines before opinions.' },
+  { title: 'Invent & simplify', text: 'The right-sized model for every step.' },
+  { title: 'Raise the bar', text: 'Standards and tools the whole team builds on.' },
+  { title: 'Deliver results', text: 'Systems that run in production, not demos.' },
 ];
 
 const FACTS: [string, React.ReactNode][] = [
@@ -94,18 +93,17 @@ export default function About() {
           <Reveal delay={0.15} className="lg:pt-2">
             <div className="panel relative overflow-hidden rounded-[28px] p-2">
               <div className="flex items-center justify-between px-5 pb-3 pt-4">
-                <span className="eyebrow">Telemetry</span>
+                <span className="eyebrow">Operating principles</span>
                 <span className="eyebrow flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-go" /> live
+                  <span className="h-1.5 w-1.5 rounded-full bg-go" /> active
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[22px] bg-white/[0.06]">
-                {STATS.map((s) => (
-                  <div key={s.label} className="bg-ink/95 p-6 md:p-7">
-                    <div className="font-mono text-[clamp(1.9rem,3vw,2.6rem)] font-medium tracking-tight text-star">
-                      <CountUp to={s.to} suffix={s.suffix} />
-                    </div>
-                    <p className="mt-3 text-[13px] leading-snug text-star/45">{s.label}</p>
+                {PRINCIPLES.map((pr) => (
+                  <div key={pr.title} className="group bg-ink/95 p-6 md:p-7">
+                    <span className="block h-1.5 w-1.5 rounded-full bg-ion shadow-[0_0_10px_rgba(94,232,245,0.7)] transition-transform duration-500 group-hover:scale-150" />
+                    <p className="mt-4 text-[17px] font-semibold tracking-tight text-star">{pr.title}</p>
+                    <p className="mt-2 text-[13px] leading-snug text-star/45">{pr.text}</p>
                   </div>
                 ))}
               </div>

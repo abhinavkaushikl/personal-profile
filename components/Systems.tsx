@@ -32,7 +32,7 @@ export default function Systems() {
           index="06"
           label="Systems — capability map"
           title={<>Every tool,<br />in orbit.</>}
-          kicker="Nine clusters, one gravity well. Hover a cluster to trace what it connects to."
+          kicker="Every cluster, one gravity well. Hover a cluster to trace what it connects to."
         />
 
         <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
@@ -137,7 +137,7 @@ export default function Systems() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
                 <p className="eyebrow">
-                  <span className="text-ion">Cluster {String(active + 1).padStart(2, '0')}</span> · {group.items.length} systems
+                  <span className="text-ion">Cluster</span> · capability map
                 </p>
                 <h3 className="mt-4 text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-none tracking-[-0.04em]">{group.name}</h3>
                 <div className="mt-8 flex flex-wrap gap-2.5">
