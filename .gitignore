@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*.local
+/image.png
+/image copy.png
+*.log

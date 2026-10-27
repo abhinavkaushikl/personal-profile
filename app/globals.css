@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #05060a;
+  --ion: #5ee8f5;
+  --star: #f5f6fa;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--void);
+}
+
+/* No body background: the fixed starfield layers sit at negative z-index and must paint above it. */
+body {
+  color: var(--star);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(94, 232, 245, 0.32);
+  color: #fff;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1400px] px-5 md:px-10;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.28em] text-star/50;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] tracking-wide text-star/65;
+  }
+}
+
+.text-chrome {
+  background: linear-gradient(180deg, #ffffff 0%, #e4e7ef 45%, #858aa0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 20px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+/* Large surfaces skip backdrop-filter so the live starfield behind them doesn't force a re-blur every frame. */
+.panel {
+  background: linear-gradient(180deg, rgba(18, 20, 32, 0.86), rgba(8, 9, 16, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 40px 120px -60px rgba(0, 0, 0, 0.95);
+}
+
+.panel-solid {
+  background: linear-gradient(180deg, #121420 0%, #0a0b13 60%, #08090f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 -30px 80px -40px rgba(0, 0, 0, 0.95);
+}
+
+.grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Orbits around the portrait. Satellites carry the inverse rotation so they stay camera-facing. */
+.orbit {
+  position: absolute;
+  border-radius: 9999px;
+  transform-style: preserve-3d;
+}
+.orbit-a {
+  inset: 5%;
+  border: 1px solid rgba(94, 232, 245, 0.38);
+  animation: orbit-a 16s linear infinite;
+}
+.orbit-b {
+  inset: -4%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  animation: orbit-b 26s linear infinite;
+}
+.orbit-c {
+  inset: -14%;
+  border: 1px dashed rgba(255, 255, 255, 0.07);
+  animation: orbit-c 60s linear infinite;
+}
+.sat {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 9999px;
+}
+.sat-a {
+  background: #5ee8f5;
+  box-shadow: 0 0 14px 4px rgba(94, 232, 245, 0.75);
+  animation: sat-a 16s linear infinite;
+}
+.sat-b {
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  top: -3.5px;
+  background: #ff3b30;
+  box-shadow: 0 0 12px 3px rgba(255, 59, 48, 0.7);
+  animation: sat-b 26s linear infinite;
+}
+@keyframes orbit-a {
+  from { transform: rotateX(74deg) rotateY(-14deg) rotateZ(0deg); }
+  to { transform: rotateX(74deg) rotateY(-14deg) rotateZ(360deg); }
+}
+@keyframes sat-a {
+  from { transform: rotateZ(0deg) rotateY(14deg) rotateX(-74deg); }
+  to { transform: rotateZ(-360deg) rotateY(14deg) rotateX(-74deg); }
+}
+@keyframes orbit-b {
+  from { transform: rotateX(66deg) rotateY(26deg) rotateZ(360deg); }
+  to { transform: rotateX(66deg) rotateY(26deg) rotateZ(0deg); }
+}
+@keyframes sat-b {
+  from { transform: rotateZ(-360deg) rotateY(-26deg) rotateX(-66deg); }
+  to { transform: rotateZ(0deg) rotateY(-26deg) rotateX(-66deg); }
+}
+@keyframes orbit-c {
+  from { transform: rotateX(78deg) rotateZ(0deg); }
+  to { transform: rotateX(78deg) rotateZ(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee {
+  animation: marquee 48s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes drop {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(260%); }
+}
+
+@keyframes nebula-a {
+  0%, 100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(5%, 3%, 0) scale(1.12); }
+}
+@keyframes nebula-b {
+  0%, 100% { transform: translate3d(4%, 6%, 0) scale(1.1); }
+  50% { transform: translate3d(-5%, -2%, 0) scale(0.95); }
+}
+
+@keyframes trail {
+  to { stroke-dashoffset: -24; }
+}
+.trail {
+  stroke-dasharray: 6 6;
+  animation: trail 0.9s linear infinite;
+}
+
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

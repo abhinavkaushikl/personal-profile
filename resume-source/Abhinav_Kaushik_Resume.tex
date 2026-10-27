@@ -1,0 +1,146 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\else
+  \usepackage{fontspec}
+  % Kerning off: kerned pairs ("A WS", "T ree") split words for ATS text extraction.
+  \setmainfont{lmroman10-regular}[Extension=.otf, BoldFont=lmroman10-bold,
+    ItalicFont=lmroman10-italic, BoldItalicFont=lmroman10-bolditalic, Kerning=Off]
+\fi
+\usepackage[margin=0.5in,top=0.4in,bottom=0.4in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Abhinav Kaushik - Resume}, pdfauthor={Abhinav Kaushik}}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+
+\titleformat{\section}{\large\bfseries\uppercase}{}{0pt}{}[\vspace{1pt}\hrule]
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=0pt, topsep=1pt, parsep=0pt, label=\textbullet}
+
+\newcommand{\role}[4]{\textbf{#1} \textbar{} #2 \hfill #3 \textbar{} #4\par}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries ABHINAV KAUSHIK}\\[2pt]
+  {\large Senior Applied Scientist}\\[2pt]
+  Bengaluru, India \textbar{} +91 87005 71859 \textbar{} \href{mailto:aabhinav.kaushik@gmail.com}{aabhinav.kaushik@gmail.com} \textbar{} \href{https://www.linkedin.com/in/abhinav-kaushik10/}{LinkedIn}  
+\end{center}
+
+\section{Summary}
+Senior Applied Scientist with 9+ years in ML, NLP and LLMs who works backwards from customer problems and owns multi-agent and RAG systems end to end, from research to production, across Healthcare, Telecom and AIOps. Dives deep and delivers measurable results: 98\% less manual analysis, 60\% lower token cost, 43\% less human review. Leads by developing people and raising the bar: has led teams of 3--4 engineers, mentored a team through 15+ research prototypes with 7 shipped to production or paid work, and set the evaluation standards and 11 reusable agent skills junior engineers build on. Also building ThinkTree.AI, a non-profit AI learning platform used by NGO teachers to support students with ADHD.
+
+\section{Professional Experience}
+\role{Senior Applied Scientist}{United Health Group}{Bengaluru, India}{Nov 2025 - Present}
+\begin{itemize}
+  \item Led 3 engineers building and deploying a production lab-extraction agent with Claude Opus 4.7 as frontier model, Textract on an ECS cluster, Pydantic-validated outputs across 1,800 documents and work behind 800 Jira tickets.
+  \item Engineered a production multi-agent analytics chatbot in Python with Pydantic-validated tool inputs, answering AARP medical-plan questions with PySpark analysis and multi-turn reasoning, cutting manual analysis by 98\%.
+  \item Architected a 6-agent RAG platform on AWS Bedrock for policy Q\&A (design phase): HyDE query rewriting, hybrid BM25 and Titan retrieval, knowledge-graph extraction, grounded generation and LLM-as-judge hallucination checks.
+  \item Built an automatic UI generator for customer delivery that turns Jira stories and requirements into 36+ discipline-specific UI mockups using HTML, Next.js and Claude 4.6, speeding up solution design.
+  \item Standardized reproducible LLM evaluation, traceability and observability for the production analytics chatbot and its QA and Summary Agents, with LLM-judge metrics, tracing and failure detection, cutting human review by 43\%.
+  \item Owned token economics for agentic workflows, cutting cost up to 60\% by benchmarking model choice per step, routing extraction and classification to smaller models and keeping frontier models for multi-step reasoning.
+  \item Fine-tuned a cross-encoder on positive/negative pairs to re-rank RAG retrieval over AARP surveys, with embeddings served from Databricks Vector Search and pgvector, lifting question-answering accuracy over the baseline.
+\end{itemize}
+\vspace{3pt}
+\role{Senior Machine Learning Engineer}{Viavi Solutions}{Chennai, India}{Sep 2024 - Nov 2025}
+\begin{itemize}
+  \item Led the team of 4 to build an event-correlation engine clustering alarms with Sentence-BERT and DBSCAN, tracing network alarm floods back to the root event and improving semantic alarm classification by 83\%.
+  \item Wrote 11 reusable LLM agent skills for the junior team, automating SDLC security-breach checks and test-case generation on post-development code and making post-release review repeatable.
+  \item Deployed and owned a production SLA breach prediction system with LightGBM, FastAPI and MLflow, using GPT-3.5 for real-time root-cause analysis and remediation per breach, reducing downtime by 67\%.
+  \item Earned sales and presales trust with an internal RAG-based Project Discovery Assistant in typed Python: semantic retrieval over existing solutions grounded every LLM answer, with PII redaction, reaching a 90\% match rate.
+  \item Established CI/CD and experiment-tracking standards for model deployment with Jenkins, Bitbucket and Docker, adding unit and integration tests so every model release was repeatable and reviewed before production.
+  \item Led and mentored a team of 4 engineers across 15+ AI research prototypes for AIOps and GeoPerformance clients in NAM, EMEA and LATAM, with 7 validated into production or paid client work.
+\end{itemize}
+\vspace{3pt}
+\role{Data Scientist}{Viavi Solutions}{Bengaluru, India}{Nov 2021 - Sep 2024}
+\begin{itemize}
+  \item Shipped anomaly detection and demand forecasting on 15+ KPIs across 500+ telecom network devices using Isolation Forest and Holt-Winters, validated against historical baselines for proactive network planning.
+  \item Contributed to network-device inventory demand forecasting using predictive models to improve planning and reduce revenue-at-risk; targeted a conservative 10\% reduction in excess/at-risk inventory and higher ARPU.
+  \item Trained and deployed a production time-series forecasting framework combining LSTM and XGBoost to model call quality, SMS delivery rates and network efficiency metrics for the Delta cellular network.
+  \item Engineered a unified time-series pipeline in SQL and Python to ingest call logs, SMS delivery statistics and signal metrics across time intervals, joined by user ID and network location for downstream forecasting.
+  \item Designed a geo-location dashboard mapping faulty network connections across EMEA, used by service providers to resolve faults at 950+ sites a year and cut fault turnaround time (TAT) by 77\%.
+\end{itemize}
+\vspace{3pt}
+\role{Data Analyst}{Optum}{Gurugram, India}{Jun 2021 - Nov 2021}
+\begin{itemize}
+  \item Built a customer-centric analytics engine and dashboard for the Renew Rewards programme for premium clients, applying Python NLP to member feedback to surface themes and sentiment, helping the marketing team convert 83\% of targeted clients month over month.
+  \item Automated Renew Rewards data processing and reporting in Python on Databricks, handling highly volatile member data in repeatable pipelines that kept analytics and marketing teams working from current numbers.
+\end{itemize}
+\vspace{3pt}
+\role{Data Engineer}{Nippon Data Systems}{Gurugram, India}{Nov 2019 - May 2021}
+\begin{itemize}
+  \item Engineered SQL, PySpark and Airflow pipelines automating BAU medical-audit reporting on large healthcare datasets, cutting manual reporting effort by 95\%.
+  \item Wrote complex SQL queries with multi-table joins, CTEs and window functions, delivering ad-hoc reports and analyses for multiple stakeholder teams.
+  \item Built real-time log observability for the COVID QRT team with Elasticsearch and Kibana, improving traceability efficiency by 80\%.
+\end{itemize}
+\vspace{3pt}
+\role{Associate Consultant}{Saksoft}{Gurugram, India}{Dec 2017 - Nov 2019}
+\begin{itemize}
+  \item Built customer dashboards for financial and product insights using QlikSense, SQL and SAP HANA, increasing user engagement by 40\%.
+  \item Developed an XGBoost propensity model predicting personal-loan applications within 7 days of contact, enabling targeted outreach.
+  \item Wrote complex SAP HANA SQL with CTEs, joins, subqueries, window functions and aggregations to extract and validate financial modelling data.
+  \item Built reusable SQL data-preparation workflows across financial and product datasets, refining queries and filters to surface relevant signals for financial teams.
+\end{itemize}
+
+
+\section{Projects}
+\textbf{Think Tree} \textbar{} ML Study Platform\par
+\begin{itemize}
+  \item Built a non-profit AI-powered ML study platform for people with ADHD and context-switching challenges, designed to help users organize learning and maintain study context.
+\end{itemize}
+\textbf{Grounded Customer Support Agent}\par
+\begin{itemize}
+  \item Built an agentic customer-support assistant for online orders and returns, combining PydanticAI tool calling, RAG with a PyTorch cross-encoder re-ranker, and a grounding check against hallucinated answers.
+  \item Evaluated it with a reproducible harness of labelled support conversations and LLM judges for faithfulness, tracking runs in MLflow on Databricks and serving it through FastAPI with tracing.
+  \item \textbf{Technologies:} PydanticAI, PyTorch, Databricks Vector Search, RAG, LLM-as-Judge, MLflow, FastAPI, Python
+\end{itemize}
+\textbf{E-Commerce Post-Deployment Security Agent}\par
+\begin{itemize}
+  \item Built an agentic security tool that evaluates live e-commerce sites post-deployment, driving a real browser against a 144-control rule pack with Playwright and an LLM to interpret evidence and classify threats.
+  \item Validated across 20+ e-commerce websites from large-scale platforms to recently vibe-coded storefronts, surfacing post-deployment security threats with structured reports, automated screenshots and reproducible evidence.
+\end{itemize}
+\textbf{Auto Evals Bot} \textbar{} Live system\par
+\begin{itemize}
+  \item Built and run a live Python bot that writes Pydantic-typed evaluation cases for LLM and agent features on demand, turning sample inputs and expected behaviour into regression suites with traced, observable runs.
+\end{itemize}
+\textbf{RFP Multi-Agent Proposal Automation Platform} \textbar{} Live system\par
+\begin{itemize}
+  \item Built and run a live multi-agent RFP platform in Python with Pydantic schemas: an LLM supervisor orchestrates intent detection, retrieval, proposal generation and document matching, with RAG over past proposals and RBAC.
+\end{itemize}
+
+\section{Education}
+\textbf{Master of Science, Machine Learning and AI} \textbar{} Liverpool John Moores University \hfill Jan 2021 - Jan 2023\par
+\textbf{Bachelor of Technology, Information Technology} \textbar{} Jamia Hamdard \hfill Aug 2013 - Aug 2017\par
+
+\section{Technical Skills}
+\textbf{AI / GenAI:} Generative AI, LLM, RAG, Agentic RAG, Agentic AI, LangGraph, LangChain, Claude, OpenAI, Embeddings, Cross-Encoder, Fine-Tuning, Hugging Face Transformers, NLP, Tool Orchestration, Amazon Textract\par
+\textbf{Machine Learning:} PyTorch, Scikit-learn, XGBoost, LightGBM, Random Forest, Isolation Forest, LSTM, SBERT, DBSCAN, Time Series Forecasting, Demand Forecasting, Anomaly Detection, Statistical Modeling, Regression, Deep Learning, A/B Testing\par
+\textbf{Evals / Observability:} LLM Evals, LLM Evaluators, Agent Tracing, Observability, Elasticsearch, Kibana, Log Analysis\par
+\textbf{Programming / Data:} Python, SQL, PySpark, Pandas, NumPy, FastAPI, Flask, Hive, Spark SQL, REST API, Pydantic, Unix\par
+\textbf{MLOps / Cloud:} MLflow, Docker, Kubernetes, Airflow, DVC, Terraform, Jenkins, Bamboo, Bitbucket, CI/CD, GCP, Azure, Vercel\par
+\textbf{Data Platforms:} Databricks, Databricks SQL, Databricks Vector Search, BigQuery, Apache Spark, Supabase\par
+\textbf{Databases:} TimescaleDB, MySQL, Vector DB, pgvector, ArangoDB, Cosmos DB\par
+\textbf{Search:} Apache Solr, Lucene Indexing, Information Retrieval\par
+\textbf{BI:} Power BI, QlikSense, SAP HANA\par
+
+\section{Languages}
+English: Native\par
+German: A1, Pursuing\par
+
+\section{Additional Information}
+\begin{itemize}
+  \item Network Intern, Airport Authority of India
+  \item Hadoop Intern, Ducat Technologies
+\end{itemize}
+
+\end{document}
